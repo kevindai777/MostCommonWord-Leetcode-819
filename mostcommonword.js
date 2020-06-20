@@ -24,4 +24,4 @@ let sorted = Object.keys(map).sort((a,b) => {
 })
 
 let filter = sorted.filter(word => !banned.includes(word))
-console.log(filter[0])
+return filter[0]
