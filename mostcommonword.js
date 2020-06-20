@@ -1,0 +1,27 @@
+//Objective is to find the most common word in a sentence in a string.
+//There is also a list of banned words that cannot be chosen.
+
+let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+let banned  = ['hit']
+
+
+//O(n) solution that uses regex as well as a hashmap to keep track of
+//the frequencies of the words, as well as to remove any punctuation.
+
+let space = paragraph.toLowerCase().split(/\W+/g)
+let map = {}
+
+for (let word of space) {
+    if (map[word] === undefined) {
+        map[word] = 1
+    } else {
+        map[word]++
+    }
+}
+
+let sorted = Object.keys(map).sort((a,b) => {
+    return map[b] - map[a]
+})
+
+let filter = sorted.filter(word => !banned.includes(word))
+console.log(filter[0])
